@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: spring-data-jpa
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+    time-zone: Asia/Shanghai
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jpa_test?
+      useUnicode=true
+      &characterEncoding=UTF-8
+      &serverTimezone=Asia/Shanghai
+      &useSSL=true
+    username: root
+    password: root
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    # 单纯不想出现WARN日志
+    open-in-view: false
