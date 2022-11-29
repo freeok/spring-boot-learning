@@ -18,6 +18,7 @@ spring:
     database: mysql
     show-sql: true
     hibernate:
+      # 每次运行程序，没有表会新建表，表内有数据不会清空，只会更新
       ddl-auto: update
     # 单纯不想出现WARN日志
     open-in-view: false
