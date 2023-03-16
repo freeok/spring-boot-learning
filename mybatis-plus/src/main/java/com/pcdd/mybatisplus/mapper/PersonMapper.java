@@ -5,11 +5,11 @@ import com.pcdd.mybatisplus.entity.Person;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
- * @author du_pch
- * @since 2021-12-28
+ * @author pcdd
+ * @date 2021-12-28
  */
 public interface PersonMapper extends BaseMapper<Person> {
 

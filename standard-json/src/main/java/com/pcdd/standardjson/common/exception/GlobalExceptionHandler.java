@@ -11,8 +11,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
  * 全局异常处理
- * @author PC
- * @version 1.0
+ *
+ * @author pcdd
  * @date 2021/8/13 20:01
  */
 @Slf4j

@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author 1907263405@qq.com
+ * @author pcdd
  * @date 2021/5/10 8:12
  */
 

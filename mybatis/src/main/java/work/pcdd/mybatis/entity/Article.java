@@ -6,8 +6,8 @@ import java.io.Serial;
 import java.io.Serializable;
 
 /**
- * @author 1907263405@qq.com
- * @since 2021-05-13
+ * @author pcdd
+ * @date 2021-05-13
  */
 @Data
 public class Article implements Serializable {

@@ -8,8 +8,7 @@ import work.pcdd.async.service.AsyncOrderService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author PC
- * @version 1.0
+ * @author pcdd
  * @date 2021/8/17 2:48
  */
 @Slf4j

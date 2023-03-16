@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Direct模式(直连型交换机)
  *
- * @author pc
+ * @author pcdd
  * @date 2022-02-14 11:41:27
  */
 @Configuration

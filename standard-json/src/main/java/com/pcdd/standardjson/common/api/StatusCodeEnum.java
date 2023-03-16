@@ -6,8 +6,7 @@ import lombok.Getter;
 /**
  * 自定义状态码
  *
- * @author PC
- * @version 1.0
+ * @author pcdd
  * @date 2021/8/13 22:37
  */
 @SuppressWarnings("AlibabaEnumConstantsMustHaveComment")

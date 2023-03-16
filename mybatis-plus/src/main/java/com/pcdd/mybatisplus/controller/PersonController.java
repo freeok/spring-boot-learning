@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
  * 前端控制器
  * </p>
  *
- * @author du_pch
- * @since 2021-12-28
+ * @author pcdd
+ * @date 2021-12-28
  */
 @RestController
 @RequestMapping("/person")

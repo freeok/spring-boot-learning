@@ -1,4 +1,3 @@
-
 package com.pcdd.jpa.controller;
 
 import com.pcdd.jpa.entity.Article;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author 1907263405@qq.com
+ * @author pcdd
  * @date 2021/3/21 19:31
  */
 @RestController

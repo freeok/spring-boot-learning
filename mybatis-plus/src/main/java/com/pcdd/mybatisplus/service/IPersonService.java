@@ -5,11 +5,11 @@ import com.pcdd.mybatisplus.entity.Person;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
- * @author du_pch
- * @since 2021-12-28
+ * @author pcdd
+ * @date 2021-12-28
  */
 public interface IPersonService extends IService<Person> {
 

@@ -12,33 +12,34 @@
     <h3>当前用户：{{username}} 在线人数：{{onlineCount}}</h3>
 
     <div class="msg-list" ref="scrollDiv">
-        <div v-for="item in msgList" style="display: flex;">
+        <div style="display: flex;" v-for="item in msgList">
             <!-- 头像 -->
-            <img src="https://img0.baidu.com/it/u=1564300630,1644640037&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500"
-                 alt="" class="avatar">
+            <img alt=""
+                 class="avatar"
+                 src="https://img0.baidu.com/it/u=1564300630,1644640037&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500">
             <div>
                 <!-- 用户名 -->
                 <div class="username">{{item.username}}</div>
                 <!-- 消息内容 -->
-                <p v-html="item.msg" :class="{self:item.ownMsg}"></p>
+                <p :class="{self:item.ownMsg}" v-html="item.msg"></p>
             </div>
         </div>
     </div>
 
     <div class="input">
         <textarea
+                @keydown.ctrl.enter="send"
                 id="story"
                 name="story"
-                v-model="content"
                 placeholder="在此输入要发送的内容"
-                @keydown.ctrl.enter="send">
+                v-model="content">
         </textarea>
         <div style="display: flex;justify-content: right">
-            <input type="button"
-                   value="发送(S)"
+            <input :disabled="content===''"
                    @click="send"
-                   :disabled="content===''"
                    class="btn-send"
+                   type="button"
+                   value="发送(S)"
             >
         </div>
     </div>

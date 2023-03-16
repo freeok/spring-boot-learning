@@ -9,8 +9,7 @@ import jakarta.websocket.EndpointConfig;
 /**
  * Websocket编码器
  *
- * @author PC
- * @version 1.0
+ * @author pcdd
  * @date 2021/8/29 0:38
  */
 public class JsonEncoder implements Encoder.Text<MessageEntity> {

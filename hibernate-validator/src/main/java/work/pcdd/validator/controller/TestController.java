@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import work.pcdd.validator.entity.Student;
 
 /**
- * @author 1907263405@qq.com
+ * @author pcdd
  * @date 2021/4/24 20:39
  */
 @Slf4j

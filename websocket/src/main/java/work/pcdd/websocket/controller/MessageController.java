@@ -6,8 +6,7 @@ import work.pcdd.websocket.socket.MessageEntity;
 import work.pcdd.websocket.socket.MessageWebsocketServer;
 
 /**
- * @author PC
- * @version 1.0
+ * @author pcdd
  * @date 2021/8/2 17:11
  */
 @RestController

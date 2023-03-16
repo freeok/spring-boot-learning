@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author pc
+ * @author pcdd
  */
 @RestController
 /*@ComponentScan(excludeFilters = {
@@ -28,7 +28,7 @@ public class Application {
     }
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "ok";
     }
 

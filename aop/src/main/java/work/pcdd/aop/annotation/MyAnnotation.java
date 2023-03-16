@@ -3,7 +3,7 @@ package work.pcdd.aop.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author 1907263405@qq.com
+ * @author pcdd
  * @date 2021/5/9 22:05
  */
 @Target(ElementType.METHOD)

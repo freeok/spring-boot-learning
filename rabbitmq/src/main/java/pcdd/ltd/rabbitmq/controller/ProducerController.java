@@ -10,14 +10,14 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author pc
+ * @author pcdd
  * @date 2022-02-14 11:39:47
  */
 @RestController
 public class ProducerController {
+    private static final AtomicInteger ATOMIC_INTEGER = new AtomicInteger(1);
     @Autowired
     private RabbitTemplate rabbitTemplate;
-    private static final AtomicInteger ATOMIC_INTEGER = new AtomicInteger(1);
 
     @GetMapping
     public String index() {

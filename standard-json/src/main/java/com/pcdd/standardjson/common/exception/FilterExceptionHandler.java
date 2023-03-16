@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
- * @author PC
- * @version 1.0
+ * @author pcdd
  * @date 2021/8/13 21:17
  */
 @RestController

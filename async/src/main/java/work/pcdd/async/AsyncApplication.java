@@ -11,12 +11,12 @@ import work.pcdd.async.service.OrderService;
 @SpringBootApplication
 public class AsyncApplication {
 
+    @Autowired
+    private OrderService orderService;
+
     public static void main(String[] args) {
         SpringApplication.run(AsyncApplication.class, args);
     }
-
-    @Autowired
-    private OrderService orderService;
 
     @GetMapping("/makeOrder")
     public String makeOrder() {

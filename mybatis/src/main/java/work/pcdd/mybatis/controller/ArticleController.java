@@ -10,8 +10,8 @@ import work.pcdd.mybatis.mapper.ArticleMapper;
 import java.util.List;
 
 /**
- * @author 1907263405@qq.com
- * @since 2021-05-13
+ * @author pcdd
+ * @date 2021-05-13
  */
 @RestController
 public class ArticleController {
