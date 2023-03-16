@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.pcdd</groupId>
-        <artifactId>SpringBoot-Learning</artifactId>
+        <artifactId>spring-boot-learning</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
