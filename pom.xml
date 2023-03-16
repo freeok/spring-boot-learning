@@ -27,6 +27,7 @@
         <module>spring-security</module>
         <module>aop</module>
         <module>jsp</module>
+        <module>custom-starter</module>
     </modules>
 
     <properties>
