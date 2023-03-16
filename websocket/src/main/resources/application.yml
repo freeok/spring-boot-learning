@@ -1,0 +1,10 @@
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+spring:
+  jackson:
+    default-property-inclusion: non_null
+  thymeleaf:
+    cache: false
