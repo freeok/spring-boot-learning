@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>SpringBoot-Learning</artifactId>
+        <groupId>com.pcdd</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>jsp</artifactId>
+    <description>
+        SpringBoot整合JSP
+        要配置内置的tomcat的工作目录为 $MODULE_WORKING_DIR$ 否则页面404
+    </description>
+
+    <dependencies>
+        <!-- springboot整合jsp无需引入thymeleaf -->
+        <!-- 引入SpringBoot内嵌的Tomcat对JSP的解析包，必选 -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- jstl依赖，可选 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+</project>

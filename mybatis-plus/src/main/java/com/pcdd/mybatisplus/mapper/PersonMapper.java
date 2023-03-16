@@ -1,7 +1,7 @@
 package com.pcdd.mybatisplus.mapper;
 
-import com.pcdd.mybatisplus.entity.Person;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.pcdd.mybatisplus.entity.Person;
 
 /**
  * <p>

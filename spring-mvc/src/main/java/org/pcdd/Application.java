@@ -1,16 +1,9 @@
 package org.pcdd;
 
-import org.pcdd.config.MvcConfig;
-import org.pcdd.interceptor.MyInterceptor1;
-import org.pcdd.interceptor.MyInterceptor2;
-import org.pcdd.interceptor.MyInterceptor3;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * @author pc

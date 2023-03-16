@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import work.pcdd.async.service.AsyncOrderService;
 import work.pcdd.async.service.OrderService;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * @author PC
  * @version 1.0

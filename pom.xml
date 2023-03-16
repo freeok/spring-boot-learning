@@ -26,6 +26,7 @@
         <module>async</module>
         <module>spring-security</module>
         <module>aop</module>
+        <module>jsp</module>
     </modules>
 
     <properties>
