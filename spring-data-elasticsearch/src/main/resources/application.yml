@@ -1,3 +1,5 @@
 spring:
   elasticsearch:
     uris: @ip.test@:9200
+    username: elastic
+    password: elastic
