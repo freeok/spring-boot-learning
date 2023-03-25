@@ -1,11 +1,11 @@
 package com.pcdd.controller;
 
+import co.elastic.clients.elasticsearch._types.SuggestMode;
 import co.elastic.clients.elasticsearch._types.query_dsl.Like;
 import co.elastic.clients.elasticsearch._types.query_dsl.MultiMatchQuery;
 import co.elastic.clients.elasticsearch._types.query_dsl.Query;
 import co.elastic.clients.elasticsearch.core.search.FieldSuggester;
 import co.elastic.clients.elasticsearch.core.search.Suggester;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pcdd.entity.Book;
 import com.pcdd.entity.BookSuggester;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,30 +104,6 @@ public class ElasticsearchTemplateController {
         SearchHits<Book> searchHits = elasticsearchTemplate.search(query, Book.class);
 
         return searchHits.getSearchHits();
-    }
-
-    /**
-     * 自动补全，生效前提方式
-     * 方式一：搜索字段类型必须为CompletionField、标有@CompletionField
-     * 方式二：搜索字段类型任意，但需要在mapping.json中手动设置类型为completion，结合@Mapping
-     */
-    @GetMapping("/complete")
-    public Suggest completeSuggestion(@RequestParam String keyword) {
-        NativeQuery query = NativeQuery.builder()
-                .withSuggester(Suggester.of(builder -> builder
-                        .suggesters("YOUR_SUGGESTION", FieldSuggester.of(b -> b
-                                .prefix(keyword)
-                                .completion(c -> c
-                                        .field(BOOK_NAME)
-                                        .size(10)
-                                        .skipDuplicates(true)
-                                )
-                        ))
-                )).build();
-
-        SearchHits<BookSuggester> searchHits = elasticsearchTemplate.search(query, BookSuggester.class);
-
-        return searchHits.getSuggest();
     }
 
 }
