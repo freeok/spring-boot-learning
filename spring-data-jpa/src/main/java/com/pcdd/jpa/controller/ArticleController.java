@@ -22,7 +22,7 @@ public class ArticleController {
     ArticleRepository articleRepository;
 
     @GetMapping("/list")
-    public List<Article> getList(@RequestParam int page, @RequestParam int size) {
+    public List<Article> getList(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
         return articleRepository.findAll(pageable).getContent();
     }

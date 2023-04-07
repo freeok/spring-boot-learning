@@ -26,7 +26,8 @@ public class SpringDataJpaApplication implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         Article article = new Article();
         article.setTitle("gourmet food");
-        article.setContent("🍕🍔🍟🌭");
+        // 存入数据库的emoji为?，但通过JPA查询出来的正常
+        article.setContent("3C🍕a啊🍔吧🍟从🌭的");
         articleRepository.save(article);
     }
 }
