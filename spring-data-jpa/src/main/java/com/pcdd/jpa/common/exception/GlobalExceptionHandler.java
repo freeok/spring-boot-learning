@@ -20,9 +20,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handle(MethodArgumentNotValidException e) {
         List<ObjectError> allErrors = e.getBindingResult().getAllErrors();
         ObjectError objectError = allErrors.stream().findFirst().get();
-
         return new ResponseEntity<>(objectError.getDefaultMessage(), HttpStatus.BAD_REQUEST);
     }
-
 
 }

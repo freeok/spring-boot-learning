@@ -9,16 +9,15 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/jpa_test?
       useUnicode=true
-      &characterEncoding=UTF-8
+      &characterEncoding=utf-8
       &serverTimezone=Asia/Shanghai
-      &useSSL=true
+      &useSSL=false
     username: root
     password: root
   jpa:
-    database: mysql
-    show-sql: true
     hibernate:
       # 每次运行程序，没有表会新建表，表内有数据不会清空，只会更新
       ddl-auto: update
+    show-sql: true
     # 单纯不想出现WARN日志
     open-in-view: false
