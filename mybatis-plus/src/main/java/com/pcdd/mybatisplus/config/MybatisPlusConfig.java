@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
  */
 @Slf4j
 @Configuration
-@MapperScan("ltd.pcdd.mybatisplus.mapper")
+@MapperScan("com.pcdd.**.mapper")
 public class MybatisPlusConfig implements MetaObjectHandler {
 
     @Override

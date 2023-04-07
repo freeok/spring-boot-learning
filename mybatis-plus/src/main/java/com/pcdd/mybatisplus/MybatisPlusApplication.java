@@ -3,6 +3,9 @@ package com.pcdd.mybatisplus;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author pcdd
+ */
 @SpringBootApplication
 public class MybatisPlusApplication {
 

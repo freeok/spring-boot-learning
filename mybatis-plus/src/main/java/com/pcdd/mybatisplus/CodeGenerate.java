@@ -10,7 +10,6 @@ import java.util.Collections;
  * @author pcdd
  * @date 2021-12-28 14:24:36
  */
-
 public class CodeGenerate {
     public static final String DB_URL = "jdbc:mysql://localhost:3306/jpa_test?" +
             "serverTimezone=Asia/Shanghai" +

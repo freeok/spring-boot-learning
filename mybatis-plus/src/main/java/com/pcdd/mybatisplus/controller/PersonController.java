@@ -21,19 +21,15 @@ public class PersonController {
     @Autowired
     private IPersonService personService;
 
-    /**
-     * 分页查询
-     */
     @GetMapping("/list")
     public Object list() {
-        return personService.page(Page.of(0, 3));
+        return personService.page(Page.of(0, 10));
     }
 
-    /**
-     * 新增或更新
-     */
     @PostMapping
     public Object addOrUpdate(@RequestBody Person person) {
-        return personService.saveOrUpdate(person);
+        Person p = new Person();
+        p.setName("🍟🍔😒😂🌭🍕");
+        return personService.saveOrUpdate(p);
     }
 }
