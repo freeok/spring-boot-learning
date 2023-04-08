@@ -1,7 +1,5 @@
-package com.pcdd.jpa.controller;
+package com.pcdd.jpa.simple;
 
-import com.pcdd.jpa.entity.Article;
-import com.pcdd.jpa.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

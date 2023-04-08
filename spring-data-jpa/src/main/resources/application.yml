@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: spring-data-jpa
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null

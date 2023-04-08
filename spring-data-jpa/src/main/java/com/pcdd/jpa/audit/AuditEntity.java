@@ -1,6 +1,5 @@
-package com.pcdd.jpa.entity;
+package com.pcdd.jpa.audit;
 
-import com.pcdd.jpa.config.ArticleAuditingListener;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
@@ -18,26 +17,24 @@ import java.time.LocalDateTime;
  */
 @Data
 @Entity
-@EntityListeners({AuditingEntityListener.class, ArticleAuditingListener.class}) // 指定审计监听器
-public class Article implements Serializable {
+@EntityListeners({AuditingEntityListener.class, AuditEntityAuditingListener.class}) // 指定审计监听器
+public class AuditEntity implements Serializable {
 
     @Id
-    // IDENTITY 与 AUTO 均为主键自增，前者由数据库控制，后者由程序控制（通过xxx_seq表）
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private String title;
-    private String description;
-    @Column(nullable = false)
     private String content;
-    private String author;
+
     @CreatedDate
     private LocalDateTime createTime;
     @LastModifiedDate
     private LocalDateTime updateTime;
+
+    @ManyToOne
     @CreatedBy
-    private String createOperator;
+    private Customer createOperator;
+    @ManyToOne
     @LastModifiedBy
-    private String modifyOperator;
+    private Customer modifyOperator;
 
 }

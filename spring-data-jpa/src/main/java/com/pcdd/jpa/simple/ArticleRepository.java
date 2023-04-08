@@ -1,6 +1,5 @@
-package com.pcdd.jpa.repository;
+package com.pcdd.jpa.simple;
 
-import com.pcdd.jpa.entity.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
