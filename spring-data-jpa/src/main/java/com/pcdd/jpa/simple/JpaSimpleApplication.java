@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author pcdd
  */
 @SpringBootApplication
-public class SpringDataJpaApplication{
+public class JpaSimpleApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringDataJpaApplication.class, args);
+        SpringApplication.run(JpaSimpleApplication.class, args);
     }
 }

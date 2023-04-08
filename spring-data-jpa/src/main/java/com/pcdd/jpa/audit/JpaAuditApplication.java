@@ -10,15 +10,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author pcdd
  */
 @SpringBootApplication
-public class SpringDataJpaApplication implements ApplicationRunner {
-    public static void main(String[] args) {
-        SpringApplication.run(SpringDataJpaApplication.class, args);
-    }
-
+public class JpaAuditApplication implements ApplicationRunner {
     @Autowired
     AuditEntityRepository auditEntityRepository;
     @Autowired
     CustomerRepository customerRepository;
+
+    public static void main(String[] args) {
+        SpringApplication.run(JpaAuditApplication.class, args);
+    }
 
     // 自定义审计监听器测试
     @Override
