@@ -16,8 +16,8 @@ import java.util.Optional;
 public class JpaConfig {
 
     /**
-     * 注解 @CreatedBy、@LastModifiedBy 配置
-     * 泛型可以为String保存用户名，或者为Long保存用户ID
+     * 泛型 T 必须和标有 @CreatedBy、@LastModifiedBy 属性的类型一致
+     * eg：String 保存用户名，Long 保存用户ID
      */
     @Bean
     public AuditorAware<String> auditorProvider() {

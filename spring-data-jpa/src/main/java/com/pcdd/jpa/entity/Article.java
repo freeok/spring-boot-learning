@@ -1,5 +1,6 @@
 package com.pcdd.jpa.entity;
 
+import com.pcdd.jpa.config.ArticleAuditingListener;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Entity
-@EntityListeners(AuditingEntityListener.class) // 审计功能
+@EntityListeners({AuditingEntityListener.class, ArticleAuditingListener.class}) // 指定审计监听器
 public class Article implements Serializable {
 
     @Id

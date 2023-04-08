@@ -22,12 +22,21 @@ public class SpringDataJpaApplication implements ApplicationRunner {
     @Autowired
     ArticleRepository articleRepository;
 
+    // 自定义审计监听器测试
     @Override
     public void run(ApplicationArguments args) throws Exception {
         Article article = new Article();
         article.setTitle("gourmet food");
         // 存入数据库的emoji为?，但通过JPA查询出来的正常
         article.setContent("3C🍕a啊🍔吧🍟从🌭的");
-        articleRepository.save(article);
+
+        Article save = articleRepository.save(article);
+
+        save.setContent("修改内容");
+        articleRepository.save(save);
+
+        articleRepository.findById(save.getId());
+
+        articleRepository.delete(save);
     }
 }
