@@ -1,0 +1,36 @@
+resilience4j.ratelimiter:
+  configs:
+    default:
+      registerHealthIndicator: false
+      limitForPeriod: 10
+      limitRefreshPeriod: 5s
+      timeoutDuration: 0
+      eventConsumerBufferSize: 100
+  instances:
+    backendA:
+      baseConfig: default
+    backendB:
+      limitForPeriod: 3
+      limitRefreshPeriod: 5s
+      timeoutDuration: 0
+
+resilience4j.circuitbreaker:
+  instances:
+    backendA:
+      registerHealthIndicator: true
+      slidingWindowSize: 100
+    backendB:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 3
+      slidingWindowType: TIME_BASED
+      minimumNumberOfCalls: 5
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 20
+      eventConsumerBufferSize: 10
+
+resilience4j.retry:
+  instances:
+    backendA:
+      maxAttempts: 5
+      waitDuration: 1s

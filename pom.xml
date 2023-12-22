@@ -28,6 +28,7 @@
         <module>aop</module>
         <module>jsp</module>
         <module>custom-starter</module>
+        <module>resilience4j</module>
     </modules>
 
     <properties>
@@ -39,7 +40,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.4</version>
+        <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -61,7 +62,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.8.15</version>
+            <version>5.8.23</version>
         </dependency>
     </dependencies>
 
