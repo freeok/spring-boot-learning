@@ -1,4 +1,4 @@
-package org.pcdd.interceptor;
+package org.pcdd.springmvc.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

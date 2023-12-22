@@ -1,8 +1,8 @@
-package org.pcdd.config;
+package org.pcdd.springmvc.config;
 
-import org.pcdd.interceptor.MyInterceptor1;
-import org.pcdd.interceptor.MyInterceptor2;
-import org.pcdd.interceptor.MyInterceptor3;
+import org.pcdd.springmvc.interceptor.MyInterceptor1;
+import org.pcdd.springmvc.interceptor.MyInterceptor2;
+import org.pcdd.springmvc.interceptor.MyInterceptor3;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

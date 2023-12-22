@@ -1,4 +1,4 @@
-package org.pcdd.interceptor;
+package org.pcdd.springmvc.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @date 2021/5/9 22:20
  */
 @Slf4j
-public class MyInterceptor3 implements HandlerInterceptor {
+public class MyInterceptor1 implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("preHandle——{}", this.getClass().getSimpleName());
