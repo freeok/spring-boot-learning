@@ -6,7 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+/**
+ * @author pcdd
+ */
 @RestController
 @SpringBootApplication
 public class SpringNativeApplication {
@@ -16,8 +22,11 @@ public class SpringNativeApplication {
     }
 
     @GetMapping("/")
-    public LocalDateTime getCurrentTime() {
-        return LocalDateTime.now();
+    public Map<String, Object> getCurrentTime() {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("message", "Hello World!");
+        map.put("time",  LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        return map;
     }
 
 }

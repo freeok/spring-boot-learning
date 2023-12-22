@@ -6,19 +6,17 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.1</version>
+        <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.pcdd</groupId>
     <artifactId>spring-native</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>latest</version>
     <name>spring-native</name>
 
     <properties>
         <java.version>17</java.version>
-        <!-- spring-boot 和 spring-native 版本必须对应 -->
-        <spring-native.version>0.12.1</spring-native.version>
     </properties>
 
     <dependencies>
@@ -26,39 +24,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.experimental</groupId>
-            <artifactId>spring-native</artifactId>
-            <version>${spring-native.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.experimental</groupId>
-                <artifactId>spring-aot-maven-plugin</artifactId>
-                <version>${spring-native.version}</version>
-                <executions>
-                    <execution>
-                        <id>generate</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.graalvm.buildtools</groupId>
+                <artifactId>native-maven-plugin</artifactId>
             </plugin>
-
-            <!--Spring Boot 2.3发布后带来了新特性之一就是对构建镜像的便捷支持-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <builder>paketobuildpacks/builder:tiny</builder>
+                        <builder>paketobuildpacks/builder-jammy-tiny:latest</builder>
+                        <!-- 默认每次构建镜像都会下载 JDK -->
+                        <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                         <env>
-                            <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
                             <!-- 追加分隔符使用空格，xml配置保留空格（ xml:space="preserve" ） -->
                             <BPE_DELIM_JAVA_TOOL_OPTIONS xml:space="preserve"> </BPE_DELIM_JAVA_TOOL_OPTIONS>
                             <BPE_APPEND_JAVA_TOOL_OPTIONS>-Xms64m</BPE_APPEND_JAVA_TOOL_OPTIONS>
@@ -73,21 +55,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>spring-release</id>
-            <name>Spring release</name>
-            <url>https://repo.spring.io/release</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-release</id>
-            <name>Spring release</name>
-            <url>https://repo.spring.io/release</url>
-        </pluginRepository>
-    </pluginRepositories>
-
 </project>
