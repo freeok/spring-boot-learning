@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>SSE Demo</title>
+</head>
+<body>
+
+<div>页面加载后自动打开 SSE，页面刷新/关闭后自动关闭 SSE</div>
+<button onclick="test()">触发服务端主动推送</button>
+<h3>
+  <pre id="results"></pre>
+</h3>
+
+</body>
+</html>
+
+<script>
+  // const clientId = Date.now().toString()
+  const clientId = '101'
+  console.log('clientId', clientId)
+  const sseSource = new EventSource(`http://127.0.0.1:8080/sse/open/${clientId}`)
+  const results = document.getElementById('results')
+  console.log(sseSource)
+
+  // 在与事件源的连接打开时触发
+  sseSource.onopen = function () {
+    console.log("连接打开")
+  }
+
+  // 在事件源连接未能打开时触发
+  sseSource.onerror = function (err) {
+    console.log("连接错误:", err)
+  }
+
+  // 在从事件源接收到数据时触发
+  sseSource.onmessage = function (e) {
+    console.log('onmessage', e)
+    if (e.data === '[DONE]') {
+      sseSource.close()
+    }
+    results.innerHTML += e.data
+  }
+
+  function test() {
+    results.innerHTML = ''
+
+    fetch(`http://127.0.0.1:8080/sse/test?clientId=${clientId}`)
+      .then(resp => {
+        return resp
+      })
+      .then(data => {
+        console.log(data)
+      })
+  }
+
+  window.onbeforeunload = function () {
+    fetch(`http://127.0.0.1:8080/sse/close?clientId=${clientId}`)
+      .then(resp => {
+        return resp
+      })
+      .then(data => {
+        console.log('sseClose', data)
+        sseSource.close()
+      })
+  }
+
+</script>

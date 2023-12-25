@@ -29,6 +29,7 @@
         <module>jsp</module>
         <module>custom-starter</module>
         <module>resilience4j</module>
+        <module>server-sent-events</module>
     </modules>
 
     <properties>
@@ -71,7 +72,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.0.4</version>
             </plugin>
         </plugins>
         <!-- 配置 Maven Resources 插件 -->
