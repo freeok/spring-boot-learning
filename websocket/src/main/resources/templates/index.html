@@ -1,128 +1,128 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>SpringBoot整合Websocket</title>
-    <!-- thymeleaf 引擎从 static 读取 -->
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+  <meta charset="UTF-8">
+  <title>SpringBoot整合Websocket</title>
+  <!-- thymeleaf 引擎从 static 读取 -->
+  <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
 
 <div id="app">
-    <h3>当前用户：{{username}} 在线人数：{{onlineCount}}</h3>
+  <h3>当前用户：{{username}} 在线人数：{{onlineCount}}</h3>
 
-    <div class="msg-list" ref="scrollDiv">
-        <div style="display: flex;" v-for="item in msgList">
-            <!-- 头像 -->
-            <img alt=""
-                 class="avatar"
-                 src="https://img0.baidu.com/it/u=1564300630,1644640037&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500">
-            <div>
-                <!-- 用户名 -->
-                <div class="username">{{item.username}}</div>
-                <!-- 消息内容 -->
-                <p :class="{self:item.ownMsg}" v-html="item.msg"></p>
-            </div>
-        </div>
+  <div class="msg-list" ref="scrollDiv">
+    <div style="display: flex;" v-for="item in msgList">
+      <!-- 头像 -->
+      <img alt=""
+           class="avatar"
+           src="https://img0.baidu.com/it/u=1564300630,1644640037&fm=253&fmt=auto&app=138&f=PNG?w=500&h=500">
+      <div>
+        <!-- 用户名 -->
+        <div class="username">{{item.username}}</div>
+        <!-- 消息内容 -->
+        <p :class="{self:item.ownMsg}" v-html="item.msg"></p>
+      </div>
     </div>
+  </div>
 
-    <div class="input">
+  <div class="input">
         <textarea
-                @keydown.ctrl.enter="send"
-                id="story"
-                name="story"
-                placeholder="在此输入要发送的内容"
-                v-model="content">
+          @keydown.ctrl.enter="send"
+          id="story"
+          name="story"
+          placeholder="在此输入要发送的内容"
+          v-model="content">
         </textarea>
-        <div style="display: flex;justify-content: right">
-            <input :disabled="content===''"
-                   @click="send"
-                   class="btn-send"
-                   type="button"
-                   value="发送(S)"
-            >
-        </div>
+    <div style="display: flex;justify-content: right">
+      <input :disabled="content===''"
+             @click="send"
+             class="btn-send"
+             type="button"
+             value="发送(S)"
+      >
     </div>
+  </div>
 </div>
 
 <script src="https://unpkg.com/vue@2.7.14/dist/vue.min.js"></script>
 <script src="https://unpkg.com/dayjs@1.11.6/dayjs.min.js"></script>
 <script type="text/javascript">
-    let app = new Vue({
-        el: '#app',
-        data: {
-            ws: null,
-            socketUrl: 'ws://localhost:8080/',
-            msgList: [],
-            content: '',
-            username: '',
-            onlineCount: 0
-        },
-        created() {
-            // 箭头函数中必须使用_this
-            const _this = this
-            // 为进入聊天室的用户分配用户名，命名：user年月日时分秒毫秒
-            let username = `用户${dayjs().format('YYYYMMDDHHmmssSSS')}`
-            this.username = username
-            const ws = new WebSocket(`${this.socketUrl}/${username}`)
-            this.ws = ws
-            // 打开事件
-            ws.onopen = function (e) {
-                console.log(e)
-                console.log("websocket已打开")
-            }
-            // 监听消息事件，根据消息类型处理
-            ws.onmessage = function (e) {
-                let data = JSON.parse(e.data)
-                console.log('客户端接收到的消息', data)
-                if (['PRIVATE_CHAT', 'GROUP_CHAT'].includes(data.type)) {
-                    let showMsg = `<div class="info">${data.msg}</div>`
-                    _this.msgList.push({
-                        username: data.username,
-                        msg: showMsg,
-                        ownMsg: _this.username === data.username // 是否为自己发的消息
-                    })
-                    _this.handleScrollBottom()
-                    return
-                }
-                if (data.type === 'SYSTEM') {
-                    _this.onlineCount = data.msg
-                }
-            }
-            // 关闭事件
-            ws.onclose = function () {
-                alert("websocket已关闭");
-            }
-            //发生了错误事件
-            ws.onerror = function () {
-                alert("websocket发生了错误");
-            }
-        },
-        methods: {
-            // 群聊：发送聊天消息
-            send() {
-                let content = this.content
-                if (content !== '') {
-                    let json = {
-                        type: 'GROUP_CHAT',
-                        username: this.username,
-                        msg: content
-                    }
-                    this.ws.send(JSON.stringify(json))
-                    // 清空输入框
-                    this.content = ''
-                }
-            },
-            // 滚动到底部
-            handleScrollBottom() {
-                this.$nextTick(() => {
-                    let scrollElem = this.$refs.scrollDiv;
-                    console.log(scrollElem)
-                    scrollElem.scrollTo({top: scrollElem.scrollHeight, behavior: 'smooth'});
-                });
-            }
+  let app = new Vue({
+    el: '#app',
+    data: {
+      ws: null,
+      socketUrl: 'ws://localhost:8080/',
+      msgList: [],
+      content: '',
+      username: '',
+      onlineCount: 0
+    },
+    created() {
+      // 箭头函数中必须使用_this
+      const _this = this
+      // 为进入聊天室的用户分配用户名，命名：user年月日时分秒毫秒
+      let username = `用户${dayjs().format('YYYYMMDDHHmmssSSS')}`
+      this.username = username
+      const ws = new WebSocket(`${this.socketUrl}/${username}`)
+      this.ws = ws
+      // 打开事件
+      ws.onopen = function (e) {
+        console.log(e)
+        console.log("websocket已打开")
+      }
+      // 监听消息事件，根据消息类型处理
+      ws.onmessage = function (e) {
+        let data = JSON.parse(e.data)
+        console.log('客户端接收到的消息', data)
+        if (['PRIVATE_CHAT', 'GROUP_CHAT'].includes(data.type)) {
+          let showMsg = `<div class="info">${data.msg}</div>`
+          _this.msgList.push({
+            username: data.username,
+            msg: showMsg,
+            ownMsg: _this.username === data.username // 是否为自己发的消息
+          })
+          _this.handleScrollBottom()
+          return
         }
-    })
+        if (data.type === 'SYSTEM') {
+          _this.onlineCount = data.msg
+        }
+      }
+      // 关闭事件
+      ws.onclose = function () {
+        alert("websocket已关闭");
+      }
+      //发生了错误事件
+      ws.onerror = function () {
+        alert("websocket发生了错误");
+      }
+    },
+    methods: {
+      // 群聊：发送聊天消息
+      send() {
+        let content = this.content
+        if (content !== '') {
+          let json = {
+            type: 'GROUP_CHAT',
+            username: this.username,
+            msg: content
+          }
+          this.ws.send(JSON.stringify(json))
+          // 清空输入框
+          this.content = ''
+        }
+      },
+      // 滚动到底部
+      handleScrollBottom() {
+        this.$nextTick(() => {
+          let scrollElem = this.$refs.scrollDiv;
+          console.log(scrollElem)
+          scrollElem.scrollTo({top: scrollElem.scrollHeight, behavior: 'smooth'});
+        });
+      }
+    }
+  })
 </script>
 </body>
 </html>

@@ -52,7 +52,7 @@ public class SpringDataESApplication {
             books.add(book);
 
             BookSuggester bookSuggester = BookSuggester.builder().build();
-            BeanUtils.copyProperties(book,bookSuggester);
+            BeanUtils.copyProperties(book, bookSuggester);
             bookSuggester.setBookName(new Completion(List.of(bookName)));
             bookSuggesters.add(bookSuggester);
         }

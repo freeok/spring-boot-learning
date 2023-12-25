@@ -3,9 +3,9 @@
 <head>
     <title>Title</title>
     <style>
-        .show {
-            color: red;
-        }
+      .show {
+        color: red;
+      }
     </style>
 </head>
 <body>
