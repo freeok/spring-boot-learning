@@ -36,9 +36,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <docker>
+                    </docker>
                     <image>
+                        <name>docker.io/library/native-app:${project.version}</name>
+                        <!-- 要使用的构建器映像的名称 -->
                         <builder>paketobuildpacks/builder-jammy-tiny:latest</builder>
-                        <!-- 默认每次构建镜像都会下载 JDK -->
+                        <!-- 要使用的运行映像的名称 -->
+                        <runImage>paketobuildpacks/run-jammy-tiny:latest</runImage>
+                        <!-- 用于确定何时从注册表中提取构建器并运行映像的策略 -->
                         <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                         <env>
                             <!-- 追加分隔符使用空格，xml配置保留空格（ xml:space="preserve" ） -->

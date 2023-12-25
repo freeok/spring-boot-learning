@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 /**
  * @author pcdd
@@ -18,6 +19,7 @@ import java.util.Map;
 public class SpringNativeApplication {
 
     public static void main(String[] args) {
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+8"));
         SpringApplication.run(SpringNativeApplication.class, args);
     }
 
