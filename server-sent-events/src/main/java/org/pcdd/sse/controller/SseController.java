@@ -55,11 +55,13 @@ public class SseController {
     @SneakyThrows
     public void likeChatGPT(@RequestParam String clientId) {
         Queue<String> queue = new ArrayDeque<>();
-        queue.add("Server-Sent Events（SSE）是一种用于实现服务器向客户端实时推送数据的Web技术。与传统的轮询和长轮询相比，SSE提供了更高效和实时的数据推送机制。\n");
-        queue.add("SE基于HTTP协议，允许服务器将数据以事件流（Event Stream）的形式发送给客户端。客户端通过建立持久的HTTP连接，并监听事件流，可以实时接收服务器推送的数据。\n");
-        queue.add("SSE的主要特点包括：简单易用：SSE使用基于文本的数据格式，如纯文本、JSON等，使得数据的发送和解析都相对简单。\n");
-        queue.add("单向通信：SSE支持服务器向客户端的单向通信，服务器可以主动推送数据给客户端，而客户端只能接收数据。\n");
-        queue.add("实时性：SSE建立长时间的连接，使得服务器可以实时地将数据推送给客户端，而无需客户端频繁地发起请求。\n");
+        queue.add("1. Server-Sent Events（SSE）是一种用于实现服务器向客户端实时推送数据的Web技术。\n");
+        queue.add("2. 与传统的轮询和长轮询相比，SSE提供了更高效和实时的数据推送机制。\n");
+        queue.add("3. SE基于HTTP协议，允许服务器将数据以事件流（Event Stream）的形式发送给客户端。\n");
+        queue.add("4. 客户端通过建立持久的HTTP连接，并监听事件流，可以实时接收服务器推送的数据。\n");
+        queue.add("5. SSE的主要特点包括：简单易用：SSE使用基于文本的数据格式，如纯文本、JSON等，使得数据的发送和解析都相对简单。\n");
+        queue.add("6. 单向通信：SSE支持服务器向客户端的单向通信，服务器可以主动推送数据给客户端，而客户端只能接收数据。\n");
+        queue.add("7. 实时性：SSE建立长时间的连接，使得服务器可以实时地将数据推送给客户端，而无需客户端频繁地发起请求。\n");
 
         while (!queue.isEmpty()) {
             SseDTO sseDTO = new SseDTO();

@@ -2,15 +2,22 @@
 <html lang="en">
 <head>
   <title>SSE Demo</title>
+  <style>
+    pre {
+      font: 16px 'Microsoft YaHei UI';
+      color: #394150;
+      line-height: 28px;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
+
 <body>
-
-<div>页面加载后自动打开 SSE，页面刷新/关闭后自动关闭 SSE</div>
-<button onclick="test()">触发服务端主动推送</button>
-<h3>
+<div style="margin: 0 auto; width: 500px;">
+  <div>页面加载后自动打开 SSE，页面刷新/关闭后自动关闭 SSE</div>
+  <button onclick="test()" style="margin-top: 20px;">触发服务端主动推送</button>
   <pre id="results"></pre>
-</h3>
-
+</div>
 </body>
 </html>
 
@@ -34,10 +41,7 @@
 
   // 在从事件源接收到数据时触发
   sseSource.onmessage = function (e) {
-    console.log('onmessage', e)
-    if (e.data === '[DONE]') {
-      sseSource.close()
-    }
+    console.log('onmessage:', e)
     results.innerHTML += e.data
   }
 
@@ -53,15 +57,19 @@
       })
   }
 
-  window.onbeforeunload = function () {
+  function close() {
     fetch(`http://127.0.0.1:8080/sse/close?clientId=${clientId}`)
       .then(resp => {
         return resp
       })
       .then(data => {
-        console.log('sseClose', data)
+        console.log('sseClose:', data)
         sseSource.close()
       })
+  }
+
+  window.onbeforeunload = function () {
+    close()
   }
 
 </script>
