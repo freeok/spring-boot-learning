@@ -22,16 +22,19 @@ public class AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String content;
 
     @CreatedDate
     private LocalDateTime createTime;
+
     @LastModifiedDate
     private LocalDateTime updateTime;
 
     @ManyToOne
     @CreatedBy
     private Customer createOperator;
+
     @ManyToOne
     @LastModifiedBy
     private Customer modifyOperator;

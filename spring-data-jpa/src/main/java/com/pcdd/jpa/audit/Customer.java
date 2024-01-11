@@ -17,6 +17,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 // 坑：AbstractAuditable<U, PK> 中的 U 必须为引用类型，因为字段标记了@ManyToOne
 public class Customer extends AbstractAuditable<Customer, Long> {
+
     // 省略了 id、createdBy、createdDate、lastModifiedBy、lastModifiedDate，因为已被继承
     private String name;
+
 }

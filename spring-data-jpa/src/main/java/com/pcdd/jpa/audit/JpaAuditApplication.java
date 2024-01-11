@@ -11,35 +11,39 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class JpaAuditApplication implements ApplicationRunner {
-    @Autowired
-    AuditEntityRepository auditEntityRepository;
-    @Autowired
-    CustomerRepository customerRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(JpaAuditApplication.class, args);
     }
 
+    @Autowired
+    AuditEntityRepository auditEntityRepository;
+    @Autowired
+    CustomerRepository customerRepository;
+
     // 自定义审计监听器测试
     @Override
     public void run(ApplicationArguments args) {
+        // 新增审计者
         Customer customer = new Customer();
         customer.setName("admin");
         customerRepository.save(customer);
-        // 新增
-        Customer customer2 = new Customer();
-        customer2.setName("张三");
-        customerRepository.save(customer2);
 
+        // 新增，触发 @PrePersist、@PostPersist
         AuditEntity auditEntity = new AuditEntity();
         // 存入数据库的emoji为?，但通过JPA查询出来的正常
-        auditEntity.setContent("3C🍕a啊🍔吧🍟从🌭的");
-
-        auditEntityRepository.save(auditEntity);
+        auditEntity.setContent("你🍕好🍔世🍟界🌭");
         AuditEntity save = auditEntityRepository.save(auditEntity);
-        save.setContent("修改内容");
+
+        // 修改，触发 @preUpdate、@postUpdate
+        save.setContent("修改后的内容");
         auditEntityRepository.save(save);
+
+        // 查询，触发 @postLoad
         auditEntityRepository.findById(save.getId());
-        // articleRepository.delete(save);
+
+        // 删除，触发 @preRemove、@postRemove
+        auditEntityRepository.delete(save);
     }
+
 }

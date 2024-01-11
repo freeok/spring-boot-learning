@@ -23,7 +23,7 @@ public class JpaConfig {
      */
     @Bean
     public AuditorAware<Customer> auditorProvider() {
-        // 假设id为1为管理员，由于外键约束，管理员必须已在数据库
+        // 假设 id 为 1 表示管理员，由于外键约束，管理员必须已在数据库
         return () -> customerRepository.findById(1L);
     }
 

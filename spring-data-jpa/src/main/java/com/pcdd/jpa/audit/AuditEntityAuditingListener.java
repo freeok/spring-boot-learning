@@ -1,9 +1,6 @@
 package com.pcdd.jpa.audit;
 
-import jakarta.persistence.PostLoad;
-import jakarta.persistence.PostPersist;
-import jakarta.persistence.PostRemove;
-import jakarta.persistence.PostUpdate;
+import jakarta.persistence.*;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -20,14 +17,29 @@ public class AuditEntityAuditingListener {
         log.info("查询后做些什么 {}", entity);
     }
 
+    @PrePersist
+    private void prePersist(AuditEntity entity) {
+        log.info("插入前做些什么 {}", entity);
+    }
+
     @PostPersist
     private void postPersist(AuditEntity entity) {
         log.info("插入后做些什么 {}", entity);
     }
 
+    @PreUpdate
+    private void preUpdate(AuditEntity entity) {
+        log.info("更新前做些什么 {}", entity);
+    }
+
     @PostUpdate
     private void postUpdate(AuditEntity entity) {
         log.info("更新后做些什么 {}", entity);
+    }
+
+    @PreRemove
+    private void preRemove(AuditEntity entity) {
+        log.info("删除前做些什么 {}", entity);
     }
 
     @PostRemove
