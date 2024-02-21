@@ -29,6 +29,7 @@
         <module>custom-starter</module>
         <module>resilience4j</module>
         <module>server-sent-events</module>
+        <module>spring-ai</module>
     </modules>
 
     <properties>

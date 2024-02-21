@@ -1,0 +1,6 @@
+spring:
+  ai:
+    openai:
+      # 来源：https://pgthinker.me/2023/10/03/196/
+      api-key: sk-cz2Q9hPT2E6gDYJH1cC90098599a4f1191F6E00069D2C38d
+      base-url: https://api.mnzdna.xyz
