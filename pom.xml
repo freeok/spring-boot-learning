@@ -30,6 +30,7 @@
         <module>resilience4j</module>
         <module>server-sent-events</module>
         <module>spring-ai</module>
+        <module>redisson</module>
     </modules>
 
     <properties>
@@ -40,7 +41,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.1</version>
+        <version>3.2.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
