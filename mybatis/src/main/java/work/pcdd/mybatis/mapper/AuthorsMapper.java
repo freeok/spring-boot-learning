@@ -1,5 +1,9 @@
 package work.pcdd.mybatis.mapper;
 
+import work.pcdd.mybatis.entity.Authors;
+
+import java.util.List;
+
 /**
  * <p>
  * Mapper 接口
@@ -9,5 +13,7 @@ package work.pcdd.mybatis.mapper;
  * @since 2024-03-12
  */
 public interface AuthorsMapper {
+
+    List<Authors> find(Integer id);
 
 }
