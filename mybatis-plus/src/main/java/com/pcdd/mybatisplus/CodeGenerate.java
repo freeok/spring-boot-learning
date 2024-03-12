@@ -2,8 +2,10 @@ package com.pcdd.mybatisplus;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
+import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
+import java.sql.Types;
 import java.util.Collections;
 
 /**
@@ -11,32 +13,52 @@ import java.util.Collections;
  * @date 2021-12-28 14:24:36
  */
 public class CodeGenerate {
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/spring_data_jpa?" +
-            "serverTimezone=Asia/Shanghai" +
-            "&useUnicode=true" +
-            "&characterEncoding=utf-8" +
-            "&useSSL=true";
-    public static final String DB_USER = "root";
-    public static final String DB_PASS = "root";
+
+    public static final String DB_NAME = "blog_system";
+    public static final String DB_URL = STR."jdbc:mysql://localhost:3306/\{DB_NAME}?serverTimezone=Asia/Shanghai";
+    public static final String DB_USR = "root";
+    public static final String DB_PWD = "root";
 
     public static void main(String[] args) {
-        FastAutoGenerator.create(DB_URL, DB_USER, DB_PASS)
+        FastAutoGenerator.create(DB_URL, DB_USR, DB_PWD)
                 .globalConfig(builder -> {
-                    builder.author("baomidou") // 设置作者
-                            .enableSwagger() // 开启 swagger 模式
-                            .fileOverride() // 覆盖已生成文件
-                            .outputDir("D://"); // 指定输出目录
+                    builder.author("pcdd") // 设置作者
+                            // .enableSwagger()
+                            // .outputDir(System.getProperty("user.dir") + "/src/main/java")
+                            .outputDir("D://MPCodeGenerate"); // 指定输出目录
                 })
+                .dataSourceConfig(builder -> builder.typeConvertHandler((globalConfig, typeRegistry, metaInfo) -> {
+                    if (metaInfo.getJdbcType().TYPE_CODE == Types.SMALLINT) {
+                        // 自定义类型转换
+                        return DbColumnType.INTEGER;
+                    }
+                    return typeRegistry.getColumnType(metaInfo);
+
+                }))
                 .packageConfig(builder -> {
-                    builder.parent("com.baomidou.mybatisplus.samples.generator") // 设置父包名
-                            .moduleName("system") // 设置父包模块名
-                            .pathInfo(Collections.singletonMap(OutputFile.xml, "D://")); // 设置mapperXml生成路径
+                    builder.parent("com.pcdd.mybatis") // 设置父包名
+                            // .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + "/src/main/resources/mapper"))
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, "D://MPCodeGenerate")); // 设置 mapperXml 生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("t_simple") // 设置需要生成的表名
-                            .addTablePrefix("t_", "c_"); // 设置过滤表前缀
+                    // Entity 策略配置
+                    builder.entityBuilder()
+                            .enableFileOverride()
+                            .enableLombok(); // 生成 Lombok 注解
+                    // Controller 策略配置
+                    builder.controllerBuilder() // 生成 @RestController
+                            .enableFileOverride()
+                            .enableRestStyle();
+                    // Service 策略配置
+                    builder.serviceBuilder()
+                            .enableFileOverride();
+                    // Mapper 策略配置
+                    builder.mapperBuilder()
+                            .enableFileOverride();
                 })
-                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                // 使用 Freemarker 引擎模板，默认是 Velocity 引擎模板
+                .templateEngine(new FreemarkerTemplateEngine())
                 .execute();
     }
+
 }
