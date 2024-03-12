@@ -14,8 +14,8 @@ import java.util.List;
  */
 public interface AuthorsMapper {
 
-    List<Authors> findByInnerJoin(Integer id);
+    List<Authors> findByInnerJoin(Integer authorId);
 
-    List<Authors> findByLeftJoin(Integer id);
+    List<Authors> findByLeftJoin(Integer authorId);
 
 }

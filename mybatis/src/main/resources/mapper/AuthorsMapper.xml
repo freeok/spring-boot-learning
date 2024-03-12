@@ -13,9 +13,8 @@
         </collection>
     </resultMap>
 
-    <!-- 一对多：查询某作者，以及其所有文章 -->
     <!--
-        内连接
+        一对多内连接：查询某作者，以及其所有文章
         使用 WHERE 子句将作者和文章表连接，并且额外的限制条件 t1.author_id = 1 会筛选出作者 ID 为 1 的作者，并且不会出现重复的结果。
         如果你想要只获取特定作者的文章，并且不希望出现重复的作者记录，使用 WHERE 子句的内连接是更合适的选择。
     -->
@@ -24,12 +23,12 @@
         FROM authors t1, articles t2
         WHERE t1.author_id = t2.author_id
         <if test="id!=null">
-            and t1.author_id = #{id}
+            and t1.author_id = #{authorId}
         </if>
     </select>
 
     <!--
-        左外连接
+        一对多左外连接，
         使用 LEFT JOIN 会将所有作者与其对应的文章关联起来，并且额外的限制条件 t1.author_id = 1 会过滤掉不符合条件的记录。
         但是由于使用了 LEFT JOIN，即使作者没有对应的文章，也会显示该作者的记录，只不过对应的文章信息会填充为 NULL。
     -->
@@ -38,7 +37,7 @@
         from authors t1
         left join articles t2 on t1.author_id = t2.author_id
         <if test="id!=null">
-            and t1.author_id = #{id}
+            and t1.author_id = #{authorId}
         </if>
     </select>
 

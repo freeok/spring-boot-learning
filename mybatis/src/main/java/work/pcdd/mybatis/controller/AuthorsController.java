@@ -1,5 +1,6 @@
 package work.pcdd.mybatis.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,10 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/authors")
+@RequiredArgsConstructor
 public class AuthorsController {
 
-    @Autowired
-    AuthorsMapper authorsMapper;
+    final AuthorsMapper authorsMapper;
 
     /**
      * 一对多查询 demo，内连接实现
@@ -31,8 +32,8 @@ public class AuthorsController {
      * 如果你想要列出所有作者及其对应的文章，没写过文章的作者则不显示，这时就可以使用内连接
      */
     @GetMapping("/inner-join")
-    public List<Authors> findByOneToManyInnerJoin(@RequestParam(required = false) Integer id) {
-        return authorsMapper.findByInnerJoin(id);
+    public List<Authors> findByOneToManyInnerJoin(@RequestParam(required = false) Integer authorId) {
+        return authorsMapper.findByInnerJoin(authorId);
     }
 
     /**
@@ -40,8 +41,8 @@ public class AuthorsController {
      * 如果你想要列出所有作者及其对应的文章，即使有些作者还没有写过文章，也需要显示出来，这时就可以使用左外连接
      */
     @GetMapping("/left-join")
-    public List<Authors> findByOneToManyLeftJoin(@RequestParam(required = false) Integer id) {
-        return authorsMapper.findByLeftJoin(id);
+    public List<Authors> findByOneToManyLeftJoin(@RequestParam(required = false) Integer authorId) {
+        return authorsMapper.findByLeftJoin(authorId);
     }
 
 }

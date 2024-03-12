@@ -1,6 +1,6 @@
 package work.pcdd.mybatis.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,28 +21,27 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/articles")
+@RequiredArgsConstructor
 public class ArticlesController {
 
-    @Autowired
-    ArticlesMapper articlesMapper;
-    @Autowired
-    TagsMapper tagsMapper;
+    final ArticlesMapper articlesMapper;
+    final TagsMapper tagsMapper;
 
     /**
      * 多对一查询示例
      * 传入 id 表示单查，否则表示全查
      */
     @GetMapping("/right-join")
-    public List<Articles> findByManyToOneRightJoin(@RequestParam(required = false) Integer id) {
-        return articlesMapper.findByManyToOne(id);
+    public List<Articles> findByManyToOneRightJoin(@RequestParam(required = false) Integer authorId) {
+        return articlesMapper.findByManyToOne(authorId);
     }
 
     /**
      * 多对多查询示例
      */
     @GetMapping("/m2m")
-    public List<Articles> findByManyToMany(@RequestParam(required = false) Integer id) {
-        return tagsMapper.findByManyToMany(id);
+    public List<Articles> findByManyToMany(@RequestParam(required = false) Integer tagId) {
+        return tagsMapper.findByManyToMany(tagId);
     }
 
 }

@@ -20,7 +20,7 @@
         right join authors t2 on t1.author_id = t2.author_id
         <where>
             <if test="id != null">
-                t1.author_id = #{id}
+                t1.author_id = #{authorId}
             </if>
         </where>
     </select>
