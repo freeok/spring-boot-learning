@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface ArticlesMapper {
 
-    List<Articles> find(Integer id);
+    List<Articles> findByManyToOne(Integer id);
 
 }

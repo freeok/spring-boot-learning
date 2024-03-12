@@ -30,8 +30,8 @@ public class ArticlesController {
      * 传入 id 表示单查，否则表示全查
      */
     @GetMapping
-    public List<Articles> findById(@RequestParam(required = false) Integer id) {
-        return articlesMapper.find(id);
+    public List<Articles> findByManyToOneRightJoin(@RequestParam(required = false) Integer id) {
+        return articlesMapper.findByManyToOne(id);
     }
 
 }

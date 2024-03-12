@@ -14,7 +14,7 @@
     </resultMap>
 
     <!-- 多对一 ：查询某作者的所有文章，以及作者信息-->
-    <select id="find" resultMap="articleMap">
+    <select id="findByManyToOne" resultMap="articleMap">
         select *
         from articles t1
         right join authors t2 on t1.author_id = t2.author_id

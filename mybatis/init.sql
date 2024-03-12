@@ -36,13 +36,14 @@ CREATE TABLE article_tags
     FOREIGN KEY (tag_id) REFERENCES tags (tag_id)
 );
 
--- 插入作者数据
+-- 插入作者数据，其中“小刘”没有文章，用于测试外连接
 INSERT INTO authors (name)
 VALUES ('张三'),
        ('李四'),
        ('王五'),
        ('赵六'),
-       ('小明');
+       ('小明'),
+       ('小刘');
 
 -- 插入文章数据
 INSERT INTO articles (title, content, author_id)
