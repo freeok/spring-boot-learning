@@ -1,6 +1,6 @@
 package work.pcdd.mybatis.mapper;
 
-import work.pcdd.mybatis.entity.Articles;
+import work.pcdd.mybatis.entity.Article;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import java.util.List;
  * @author pcdd
  * @since 2024-03-12
  */
-public interface TagsMapper {
+public interface TagMapper {
 
     /**
      * 查询某标签的所有文章
      */
-    List<Articles> findByManyToMany(Integer tagId);
+    List<Article> findByManyToMany(Integer tagId);
 
 }

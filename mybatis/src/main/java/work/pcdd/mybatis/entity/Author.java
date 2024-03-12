@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * <p>
- * Authors 和 Articles 是一对多
+ * Author 和 Article 是一对多
  * 一个作者可以有多篇文章，作者是主表
  * </p>
  *
@@ -15,13 +15,13 @@ import java.util.List;
  * @since 2024-03-12
  */
 @Data
-public class Authors implements Serializable {
+public class Author implements Serializable {
 
     private Integer authorId;
     private String name;
     /**
      * 一对多
      */
-    private List<Articles> articles;
+    private List<Article> articles;
 
 }

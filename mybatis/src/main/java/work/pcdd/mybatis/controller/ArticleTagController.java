@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2024-03-12
  */
 @RestController
-@RequestMapping("/tags")
-public class TagsController {
+@RequestMapping("/article-tag")
+public class ArticleTagController {
 
 }

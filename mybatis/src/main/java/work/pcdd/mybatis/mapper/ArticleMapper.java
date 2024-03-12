@@ -1,6 +1,6 @@
 package work.pcdd.mybatis.mapper;
 
-import work.pcdd.mybatis.entity.Articles;
+import work.pcdd.mybatis.entity.Article;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import java.util.List;
  * @author pcdd
  * @since 2024-03-12
  */
-public interface ArticlesMapper {
+public interface ArticleMapper {
 
-    List<Articles> findByManyToOne(Integer authorId);
+    List<Article> findByManyToOne(Integer authorId);
 
 }

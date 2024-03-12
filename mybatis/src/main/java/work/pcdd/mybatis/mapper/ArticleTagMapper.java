@@ -8,6 +8,6 @@ package work.pcdd.mybatis.mapper;
  * @author pcdd
  * @since 2024-03-12
  */
-public interface ArticleTagsMapper {
+public interface ArticleTagMapper {
 
 }

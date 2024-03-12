@@ -3,41 +3,41 @@ CREATE DATABASE IF NOT EXISTS blog_system;
 USE blog_system;
 
 -- 创建作者表
-CREATE TABLE authors
+CREATE TABLE author
 (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
     name      VARCHAR(100) NOT NULL
 );
 
 -- 创建文章表
-CREATE TABLE articles
+CREATE TABLE article
 (
     article_id INT AUTO_INCREMENT PRIMARY KEY,
     title      VARCHAR(255) NOT NULL,
     content    TEXT,
     author_id  INT,
-    FOREIGN KEY (author_id) REFERENCES authors (author_id)
+    FOREIGN KEY (author_id) REFERENCES author (author_id)
 );
 
 -- 创建标签表
-CREATE TABLE tags
+CREATE TABLE tag
 (
     tag_id INT AUTO_INCREMENT PRIMARY KEY,
     name   VARCHAR(50) NOT NULL
 );
 
 -- 创建中间表来实现多对多关系
-CREATE TABLE article_tags
+CREATE TABLE article_tag
 (
     article_id INT,
     tag_id     INT,
     PRIMARY KEY (article_id, tag_id),
-    FOREIGN KEY (article_id) REFERENCES articles (article_id),
-    FOREIGN KEY (tag_id) REFERENCES tags (tag_id)
+    FOREIGN KEY (article_id) REFERENCES article (article_id),
+    FOREIGN KEY (tag_id) REFERENCES tag (tag_id)
 );
 
 -- 插入作者数据，其中“小刘”没有文章，用于测试外连接
-INSERT INTO authors (name)
+INSERT INTO author (name)
 VALUES ('张三'),
        ('李四'),
        ('王五'),
@@ -46,7 +46,7 @@ VALUES ('张三'),
        ('小刘');
 
 -- 插入文章数据
-INSERT INTO articles (title, content, author_id)
+INSERT INTO article (title, content, author_id)
 VALUES ('MySQL 教程',
         'MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发，目前属于 Oracle 公司。MySQL 是一个快速的、多线程的、多用户的、可靠的数据库系统。',
         1),
@@ -93,7 +93,7 @@ VALUES ('MySQL 教程',
        ('软件需求分析', '软件需求分析是确定软件系统功能和性能需求的过程，包括需求获取、分析和规格说明。', 5);
 
 -- 插入标签数据
-INSERT INTO tags (name)
+INSERT INTO tag (name)
 VALUES ('技术'),
        ('编程'),
        ('人工智能'),
@@ -101,7 +101,7 @@ VALUES ('技术'),
        ('网络安全');
 
 -- 插入文章标签关联数据
-INSERT INTO article_tags (article_id, tag_id)
+INSERT INTO article_tag (article_id, tag_id)
 VALUES (1, 1),
        (2, 3),
        (3, 1),

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="work.pcdd.mybatis.mapper.AuthorsMapper">
+<mapper namespace="work.pcdd.mybatis.mapper.AuthorMapper">
 
-    <resultMap id="authorMap" type="authors">
+    <resultMap id="authorMap" type="author">
         <id property="authorId" column="author_id"/>
         <result property="name" column="name"/>
         <!-- 一对多关系：一个作者可以有多篇文章 -->
-        <collection property="articles" ofType="articles">
+        <collection property="articles" ofType="article">
             <id property="articleId" column="article_id"/>
             <result property="title" column="title"/>
             <result property="content" column="content"/>
@@ -20,7 +20,7 @@
     -->
     <select id="findByInnerJoin" resultMap="authorMap">
         select *
-        FROM authors t1, articles t2
+        FROM author t1, article t2
         WHERE t1.author_id = t2.author_id
         <if test="id!=null">
             and t1.author_id = #{authorId}
@@ -34,8 +34,8 @@
     -->
     <select id="findByLeftJoin" resultMap="authorMap">
         select *
-        from authors t1
-        left join articles t2 on t1.author_id = t2.author_id
+        from author t1
+        left join article t2 on t1.author_id = t2.author_id
         <if test="id!=null">
             and t1.author_id = #{authorId}
         </if>
