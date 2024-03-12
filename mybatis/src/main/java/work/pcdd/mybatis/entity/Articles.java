@@ -20,5 +20,9 @@ public class Articles implements Serializable {
     private String title;
     private String content;
     private Integer authorId;
+    /**
+     * 多对一
+     */
+    private Authors author;
 
 }

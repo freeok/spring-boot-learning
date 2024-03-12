@@ -19,6 +19,9 @@ public class Authors implements Serializable {
 
     private Integer authorId;
     private String name;
+    /**
+     * 一对多
+     */
     private List<Articles> articles;
 
 }

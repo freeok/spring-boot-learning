@@ -13,7 +13,7 @@
         </collection>
     </resultMap>
 
-    <!-- 一对多：查询某作者及其所有文章 -->
+    <!-- 一对多：查询某作者，以及其所有文章 -->
     <select id="find" resultMap="authorMap">
         select *
         from authors t1,

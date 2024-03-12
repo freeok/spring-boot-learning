@@ -26,6 +26,7 @@ public class AuthorsController {
     AuthorsMapper authorsMapper;
 
     /**
+     * 一对多查询示例
      * 传入 id 表示单查，否则表示全查
      */
     @GetMapping
