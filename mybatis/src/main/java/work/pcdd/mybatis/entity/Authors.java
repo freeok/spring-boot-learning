@@ -7,7 +7,8 @@ import java.util.List;
 
 /**
  * <p>
- *
+ * Authors 和 Articles 是一对多
+ * 一个作者可以有多篇文章，作者是主表
  * </p>
  *
  * @author pcdd

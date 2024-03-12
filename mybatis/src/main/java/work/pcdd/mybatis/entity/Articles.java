@@ -3,11 +3,11 @@ package work.pcdd.mybatis.entity;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * <p>
- *
+ * Articles 和 Tags 是多对多
+ * 一篇文章可以有多个标签，一个标签也可以有多篇文章
  * </p>
  *
  * @author pcdd

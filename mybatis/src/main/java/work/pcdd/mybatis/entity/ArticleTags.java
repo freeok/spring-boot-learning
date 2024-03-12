@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- *
+ * Articles 和 Tags 的中间表
  * </p>
  *
  * @author pcdd
