@@ -35,7 +35,7 @@ public class SpringAiApplication {
     OpenAiChatClient chatClient;
 
     @GetMapping("/ai/generate")
-    public Map generate(@RequestParam(value = "msg", defaultValue = "给我讲个笑话") String msg) {
+    public Map generate(@RequestParam(value = "msg", defaultValue = "给我讲10个笑话") String msg) {
         return Map.of("generation", chatClient.call(msg));
     }
 
