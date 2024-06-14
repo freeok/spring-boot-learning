@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.1</version>
+        <version>3.3.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -35,19 +35,20 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
+                <!-- 方法 1 需要取消以下注释 -->
+                <!-- <configuration>
                     <docker>
                     </docker>
                     <image>
                         <name>docker.io/library/native-app:${project.version}</name>
-                        <!-- 要使用的构建器映像的名称 -->
+                        &lt;!&ndash; 要使用的构建器映像的名称 &ndash;&gt;
                         <builder>paketobuildpacks/builder-jammy-tiny:latest</builder>
-                        <!-- 要使用的运行映像的名称 -->
+                        &lt;!&ndash; 要使用的运行映像的名称 &ndash;&gt;
                         <runImage>paketobuildpacks/run-jammy-tiny:latest</runImage>
-                        <!-- 用于确定何时从注册表中提取构建器并运行映像的策略 -->
+                        &lt;!&ndash; 用于确定何时从注册表中提取构建器并运行映像的策略 &ndash;&gt;
                         <pullPolicy>IF_NOT_PRESENT</pullPolicy>
                         <env>
-                            <!-- 追加分隔符使用空格，xml配置保留空格（ xml:space="preserve" ） -->
+                            &lt;!&ndash; 追加分隔符使用空格，xml配置保留空格（ xml:space="preserve" ） &ndash;&gt;
                             <BPE_DELIM_JAVA_TOOL_OPTIONS xml:space="preserve"> </BPE_DELIM_JAVA_TOOL_OPTIONS>
                             <BPE_APPEND_JAVA_TOOL_OPTIONS>-Xms64m</BPE_APPEND_JAVA_TOOL_OPTIONS>
                             <BPE_APPEND_JAVA_TOOL_OPTIONS>-Xmx64m</BPE_APPEND_JAVA_TOOL_OPTIONS>
@@ -57,7 +58,7 @@
                         <argument>-Dfile.encoding=UTF-8</argument>
                         <argument>-Duser.timezone=GMT+08</argument>
                     </arguments>
-                </configuration>
+                </configuration> -->
             </plugin>
         </plugins>
     </build>
