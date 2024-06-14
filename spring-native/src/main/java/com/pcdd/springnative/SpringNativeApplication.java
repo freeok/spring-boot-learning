@@ -26,8 +26,10 @@ public class SpringNativeApplication {
     @GetMapping("/")
     public Map<String, Object> getCurrentTime() {
         Map<String, Object> map = new LinkedHashMap<>();
-        map.put("message", "Hello World!");
-        map.put("time", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        map.put("msg", "Hello World!");
+        String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        System.out.println(data);
+        map.put("data", data);
         return map;
     }
 
