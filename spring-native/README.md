@@ -49,4 +49,10 @@
 则说明修改了安装路径，默认安装在 `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools`，**因此不建议修改安装路径
 **
 
-官方文档：https://docs.spring.io/spring-boot/reference/native-image/developing-your-first-application.html
+安装成功后，控制面板程序新增如下：
+
+![img-2.png](img-2.png)
+
+卸载：https://learn.microsoft.com/zh-cn/visualstudio/install/uninstall-visual-studio?view=vs-2022
+
+Spring Native 官方文档：https://docs.spring.io/spring-boot/reference/native-image/developing-your-first-application.html
